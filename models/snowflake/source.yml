@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: my_source_name
+    database: DBT_DATA
+    schema: DBT_UJHA
+    tables:
+      - name: TABLE2
+      - name: TABLE1
