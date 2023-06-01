@@ -33,6 +33,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
+
   my_new_project:
     # Applies to all files under models/example/
     example:
@@ -40,3 +41,20 @@ models:
 
 vars: 
   id_param: 1
+  today_and_yesterday : [
+    current_date()
+    , date_sub(current_date(), interval 1 day)
+  ]
+  today_and_last_week : [
+    current_date()
+    , date_sub(current_date(), interval 1 day)
+    , date_sub(current_date(), interval 2 day)
+    , date_sub(current_date(), interval 3 day)
+    , date_sub(current_date(), interval 4 day)
+    , date_sub(current_date(), interval 5 day)
+    , date_sub(current_date(), interval 6 day)
+    , date_sub(current_date(), interval 7 day)
+  ]
+
+on-run-start: "insert into DBT_DATA.DBT_UJHA.hook(AUDIT_TYPE) values('audit start');"
+on-run-end: "insert into DBT_DATA.DBT_UJHA.hook(AUDIT_TYPE) values ('audit end');"

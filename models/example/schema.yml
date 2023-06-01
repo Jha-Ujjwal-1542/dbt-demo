@@ -11,10 +11,20 @@ models:
                 - unique
                 
     - name: my_second_dbt_model
-      description: "A starter dbt model"
+      description: '{{ doc("table_events") }}'
       columns:
           - name: id
             description: "The primary key for this table"
             tests:
                 - unique
                 - not_null
+    
+    - name: custom_model
+      description: "THis is custom model"
+      columns:
+          - name: id
+            description: '{{ doc("custom_model_fname") }}'
+          - name: name
+            description: '{{ doc("custom_model_lname") }}'
+  
+          
