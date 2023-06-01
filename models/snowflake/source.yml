@@ -7,3 +7,4 @@ sources:
     tables:
       - name: TABLE2
       - name: TABLE1
+      - name: student

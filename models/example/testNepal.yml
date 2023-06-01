@@ -1,0 +1,9 @@
+version: 2
+models:
+  - name: address_test3
+    columns:
+      - name: id
+      - name: name
+      - name: address
+        tests:
+          - is_nepal
