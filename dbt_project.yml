@@ -37,14 +37,23 @@ models:
   my_new_project:
     # Applies to all files under models/example/
     example:
-      + schema: staging
       materialized: view
 
 vars: 
   id_param: 1
-  today_and_yesterday: [
-    current_date(),
-    DATEADD(Day, -1, current_date())
+  today_and_yesterday : [
+    current_date()
+    , date_sub(current_date(), interval 1 day)
+  ]
+  today_and_last_week : [
+    current_date()
+    , date_sub(current_date(), interval 1 day)
+    , date_sub(current_date(), interval 2 day)
+    , date_sub(current_date(), interval 3 day)
+    , date_sub(current_date(), interval 4 day)
+    , date_sub(current_date(), interval 5 day)
+    , date_sub(current_date(), interval 6 day)
+    , date_sub(current_date(), interval 7 day)
   ]
 
 on-run-start: "insert into DBT_DATA.DBT_UJHA.hook(AUDIT_TYPE) values('audit start');"

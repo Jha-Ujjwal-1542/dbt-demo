@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: assessment
+    database: DBT_DATA
+    schema: DBT_UJHA
+    tables:
+      - name: titanic
